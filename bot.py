@@ -242,3 +242,4 @@ if __name__ == '__main__':
     merge_songs()
     prepare_out_folder()
     gen_packs()
+    run_converter()
