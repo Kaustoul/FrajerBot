@@ -1,0 +1,101 @@
+{
+    "format_version": "1.14.0",
+    "sound_definitions": {
+        "music_disc.asterixone": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/asterixone"
+            ]
+        },
+        "music_disc.asterixtwo": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/asterixtwo"
+            ]
+        },
+        "music_disc.cosby": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/cosby"
+            ]
+        },
+        "music_disc.dark": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/dark"
+            ]
+        },
+        "music_disc.dia": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/dia"
+            ]
+        },
+        "music_disc.dnbone": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/dnbone"
+            ]
+        },
+        "music_disc.dubstepone": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/dubstepone"
+            ]
+        },
+        "music_disc.hardstyleone": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/hardstyleone"
+            ]
+        },
+        "music_disc.infernal": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/infernal"
+            ]
+        },
+        "music_disc.isengard": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/isengard"
+            ]
+        },
+        "music_disc.lotr": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/lotr"
+            ]
+        },
+        "music_disc.pendulum": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/pendulum"
+            ]
+        },
+        "music_disc.pesetas": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/pesetas"
+            ]
+        },
+        "music_disc.rohony": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/rohony"
+            ]
+        },
+        "music_disc.rust": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/rust"
+            ]
+        },
+        "music_disc.subtronics": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/subtronics"
+            ]
+        }
+    }
+}

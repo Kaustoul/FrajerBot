@@ -1,0 +1,31 @@
+{
+  "parent": "block/carved_pumpkin",
+  
+  "overrides": [
+    { "predicate": {"custom_model_data": 11}, "model": "minecraft:block/custom/elfears"},
+    { "predicate": {"custom_model_data": 12}, "model": "minecraft:block/custom/thorncrown"},
+    { "predicate": {"custom_model_data": 19}, "model": "minecraft:block/custom/creepersuit"},
+    { "predicate": {"custom_model_data": 20}, "model": "minecraft:block/custom/goldegg"},
+    { "predicate": {"custom_model_data": 40}, "model": "minecraft:block/custom/beard"},
+    { "predicate": {"custom_model_data": 42}, "model": "minecraft:block/custom/skullhelmet"},
+    { "predicate": {"custom_model_data": 43}, "model": "minecraft:block/custom/hardhat"},
+    { "predicate": {"custom_model_data": 44}, "model": "minecraft:block/custom/cone"},
+    { "predicate": {"custom_model_data": 45}, "model": "minecraft:block/custom/tinycrown"},
+    { "predicate": {"custom_model_data": 46}, "model": "minecraft:block/custom/hood"},
+	  { "predicate": {"custom_model_data": 50}, "model": "minecraft:block/custom/wreath"},
+    { "predicate": {"custom_model_data": 52}, "model": "minecraft:block/custom/catears"},
+    { "predicate": {"custom_model_data": 54}, "model": "minecraft:block/custom/catbaloon"},
+    { "predicate": {"custom_model_data": 56}, "model": "minecraft:block/custom/baloons"},
+    { "predicate": {"custom_model_data": 59}, "model": "minecraft:block/custom/santa"},
+    { "predicate": {"custom_model_data": 60}, "model": "minecraft:block/custom/boba"},
+    { "predicate": {"custom_model_data": 61}, "model": "minecraft:block/custom/mando"},
+    { "predicate": {"custom_model_data": 62}, "model": "minecraft:block/custom/stormtrooper"},
+    { "predicate": {"custom_model_data": 63}, "model": "minecraft:block/custom/yoda"},
+    { "predicate": {"custom_model_data": 77}, "model": "minecraft:block/custom/goldcrown"},
+    { "predicate": {"custom_model_data": 79}, "model": "minecraft:block/custom/purplecrown"},
+    { "predicate": {"custom_model_data": 101}, "model": "minecraft:block/custom/tophat"},
+    { "predicate": {"custom_model_data": 4200}, "model": "minecraft:block/custom/crown"},
+    { "predicate": {"custom_model_data": 4201}, "model": "minecraft:block/custom/cowboy"},
+    { "predicate": {"custom_model_data": 4202}, "model": "minecraft:block/custom/dino"}
+  ]
+ }

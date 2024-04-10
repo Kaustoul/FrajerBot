@@ -1,0 +1,130 @@
+{
+    "music_disc.asterixone": {
+        "sounds": [
+            {
+                "name": "records/asterixone",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.asterixtwo": {
+        "sounds": [
+            {
+                "name": "records/asterixtwo",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.cosby": {
+        "sounds": [
+            {
+                "name": "records/cosby",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.dark": {
+        "sounds": [
+            {
+                "name": "records/dark",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.dia": {
+        "sounds": [
+            {
+                "name": "records/dia",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.dnbone": {
+        "sounds": [
+            {
+                "name": "records/dnbone",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.dubstepone": {
+        "sounds": [
+            {
+                "name": "records/dubstepone",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.hardstyleone": {
+        "sounds": [
+            {
+                "name": "records/hardstyleone",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.infernal": {
+        "sounds": [
+            {
+                "name": "records/infernal",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.isengard": {
+        "sounds": [
+            {
+                "name": "records/isengard",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.lotr": {
+        "sounds": [
+            {
+                "name": "records/lotr",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.pendulum": {
+        "sounds": [
+            {
+                "name": "records/pendulum",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.pesetas": {
+        "sounds": [
+            {
+                "name": "records/pesetas",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.rohony": {
+        "sounds": [
+            {
+                "name": "records/rohony",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.rust": {
+        "sounds": [
+            {
+                "name": "records/rust",
+                "stream": true
+            }
+        ]
+    },
+    "music_disc.subtronics": {
+        "sounds": [
+            {
+                "name": "records/subtronics",
+                "stream": true
+            }
+        ]
+    }
+}

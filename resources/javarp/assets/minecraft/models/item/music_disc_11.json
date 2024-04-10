@@ -1,0 +1,104 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "item/music_disc_11"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "custom_model_data": 1
+            },
+            "model": "item/music_disc_asterixone"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 2
+            },
+            "model": "item/music_disc_asterixtwo"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 3
+            },
+            "model": "item/music_disc_cosby"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 4
+            },
+            "model": "item/music_disc_dark"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 5
+            },
+            "model": "item/music_disc_dia"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 6
+            },
+            "model": "item/music_disc_dnbone"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 7
+            },
+            "model": "item/music_disc_dubstepone"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 8
+            },
+            "model": "item/music_disc_hardstyleone"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 9
+            },
+            "model": "item/music_disc_infernal"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 10
+            },
+            "model": "item/music_disc_isengard"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 11
+            },
+            "model": "item/music_disc_lotr"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 12
+            },
+            "model": "item/music_disc_pendulum"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 13
+            },
+            "model": "item/music_disc_pesetas"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 14
+            },
+            "model": "item/music_disc_rohony"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 15
+            },
+            "model": "item/music_disc_rust"
+        },
+        {
+            "predicate": {
+                "custom_model_data": 16
+            },
+            "model": "item/music_disc_subtronics"
+        }
+    ]
+}

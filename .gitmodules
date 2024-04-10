@@ -1,0 +1,6 @@
+[submodule "java2bedrock.sh"]
+	path = java2bedrock.sh
+	url = https://github.com/Kas-tle/java2bedrock.sh.git
+[submodule "infinite-music-discs-sessions"]
+	path = infinite-music-discs-sessions
+	url = git@github.com:Kaustoul/infinite-music-discs-sessions.git

@@ -1,0 +1,8 @@
+out/
+infinite_music_discs_rp
+infinite_music_discs_dp
+__pycache__/
+bot-env/
+*.rar
+java2bedrock.sh/
+infinite-music-discs-sessions/

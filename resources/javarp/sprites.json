@@ -1,0 +1,12 @@
+{
+    "carved_pumpkin": [
+        {
+            "custom_model_data": 4200,
+            "sprite": "textures/item_icons/crown_icon"
+        },
+        {
+            "custom_model_data": 4201,
+            "sprite": "textures/item_icons/cowboy_icon"
+        }
+    ]
+}
