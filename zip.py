@@ -1,7 +1,7 @@
 import os
 import zipfile
 
-from constants import OUT_FOLDER
+from constants import OUT_PATH
 
 
 def zip_folder(folder_path, zip_file_path):
@@ -12,8 +12,6 @@ def zip_folder(folder_path, zip_file_path):
                 rel_path = os.path.relpath(abs_path, folder_path)
                 zipf.write(abs_path, arcname=rel_path)
 
-def pack_folder(source_folder_path, out_name):
-    zip_file_path = os.path.join(OUT_FOLDER, out_name)
-    os.makedirs(OUT_FOLDER, exist_ok=True)
-    zip_folder(source_folder_path, zip_file_path)
-    print(f"Contents of {source_folder_path} zipped to {zip_file_path}")
+def pack_folder(source_folder_path, out_path):
+    zip_folder(source_folder_path, out_path)
+    print(f"Contents of {source_folder_path} zipped to {out_path}")

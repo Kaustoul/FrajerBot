@@ -1,0 +1,76 @@
+crown:
+  id: 4200
+  label: Svatá koruna
+  material: CARVED_PUMPKIN # default = CARVED_PUMPKIN
+cowboy:
+  id: 4201
+  label: Klobouk
+elfEars:
+  id: 11
+  label: "Elfské uši"
+thornCrown:
+  id: 12
+  label: "Trnová koruna"
+creeperSuit:
+  id: 19 
+  label: "Oblek Creepera"
+goldEgg:
+  id: 20
+  label: "Zlaté vajíčko"
+beard:
+  id: 40 
+  label: "Plnovous"
+skullHelmet:
+  id: 42
+  label: "Kostěná helma"
+hardhat:
+  id: 43
+  label: "Tvrdá přilba"
+cone:
+  id: 44
+  label: "Kornout"
+tinyCrown:
+  id: 45
+  label: "Malá koruna"
+hood:
+  id: 46
+  label: "Zamrzlá kapuce"
+wreath:
+  id: 50
+  label: "Zlatý věnec"
+catEars:
+  id: 52 
+  label: "Kočičí uši"
+catBaloon:
+  id: 54
+  label: "Balónek s kočkou"
+baloons:
+  id: 56
+  label: "Balónky"
+santa:
+  id: 59
+  label: "Santova čepice"
+boba:
+  id: 60
+  label: "Boba Fettova helma"
+mando:
+  id: 61
+  label: "Din Djarinova helma"
+stormtrooper:
+  id: 62
+  label: "Stormtrooperská helma"
+yoda:
+  id: 63 
+  label: "Uši Mistra Yody"
+goldCrown:
+  id: 77
+  label: "Zlatá koruna"
+purpleCrown:
+  id: 79
+  label: "Fialová koruna"
+topHat:
+  id: 101
+  label: "Červený klobouk"
+dino:
+  id: 4202
+  label: "Dinošek"
