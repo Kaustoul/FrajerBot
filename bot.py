@@ -129,3 +129,6 @@ async def updaterp(ctx: interactions.CommandContext):
         print("Response:", response)
 
     ctx.send("Done")
+
+if __name__ == "__main__":
+    bot.start()
