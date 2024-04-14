@@ -5,7 +5,7 @@ import subprocess
 
 from constants import SONGS_COVERS_PATH, SONGS_CONTENT_PATH, ENTRY_LIST_JSON_PATH, SONGS_DATA_JSON_PATH, \
       JAVA_PACK_PATH, JAVA_PACK_NAME, BEDROCK_PACK_PATH, BEDROCK_PACK_NAME, OUT_PATH, OUT_TMP_PATH, \
-      BEDROCK_PACK_OUT_PATH, JAVA_PACK_OUT_PATH
+      BEDROCK_PACK_OUT_PATH, JAVA_PACK_OUT_PATH, JAVA_PACK_ROOT
 from merge_songs import songs_pack_copy_to_java, convert_sounds_2_bedrock, copy_records_2_bedrock
 from zip import pack_folder
 
@@ -145,7 +145,7 @@ def prepare_out_folder():
     shutil.rmtree(OUT_PATH, ignore_errors=True)
 
 def gen_packs():
-    pack_folder(JAVA_PACK_PATH, JAVA_PACK_OUT_PATH)
+    pack_folder(JAVA_PACK_ROOT, JAVA_PACK_OUT_PATH)
     pack_folder(BEDROCK_PACK_PATH, BEDROCK_PACK_OUT_PATH)
 
 def run_converter():

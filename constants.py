@@ -7,7 +7,8 @@ SONGS_PATH = os.path.join("resources", "songs")
 SONGS_CONTENT_PATH = os.path.join(SONGS_PATH, "songs")
 SONGS_COVERS_PATH = os.path.join(SONGS_PATH, "covers")
 
-JAVA_PACK_PATH = os.path.join("resources", "javarp", "assets", "minecraft", "sounds", "records")
+JAVA_PACK_ROOT = os.path.join("resources", "javarp")
+JAVA_PACK_PATH = os.path.join(JAVA_PACK_ROOT, "assets", "minecraft")
 JAVA_RECKORDS_PATH = os.path.join(JAVA_PACK_PATH, "sounds", "records")
 JAVA_PACK_NAME = "Smazakov Pack"
 JAVA_PACK_OUT_PATH = os.path.join(OUT_PATH, f"{JAVA_PACK_NAME}.zip")
