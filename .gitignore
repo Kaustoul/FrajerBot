@@ -1,7 +1,9 @@
 out/
 __pycache__/
 target/
-.pyggmpeg/
+.cache/
+.local/
+.pyffmpeg/
 
 .gitconfig
 

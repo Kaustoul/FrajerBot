@@ -1,98 +1,98 @@
 {
     "0": {
         "disc_give_name": "asterixone",
-        "song_file": "resources\\songs\\songs\\asterixone.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\asterixone.png",
+        "song_file": "resources/songs/songs/asterixone.ogg",
+        "disc_texture_file": "resources/songs/covers/asterixone.png",
         "title": "Asterix and Obelix vs. Caesar"
     },
     "1": {
         "disc_give_name": "asterixtwo",
-        "song_file": "resources\\songs\\songs\\asterixtwo.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\asterixtwo.png",
+        "song_file": "resources/songs/songs/asterixtwo.ogg",
+        "disc_texture_file": "resources/songs/covers/asterixtwo.png",
         "title": "Asterix a Obelix Mise Kleopatra PIRATI"
     },
     "2": {
         "disc_give_name": "cosby",
-        "song_file": "resources\\songs\\songs\\cosby.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\cosby.png",
+        "song_file": "resources/songs/songs/cosby.ogg",
+        "disc_texture_file": "resources/songs/covers/cosby.png",
         "title": "Hilltop Hoods Cosby Sweater"
     },
     "3": {
         "disc_give_name": "dark",
-        "song_file": "resources\\songs\\songs\\dark.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\dark.png",
+        "song_file": "resources/songs/songs/dark.ogg",
+        "disc_texture_file": "resources/songs/covers/dark.png",
         "title": "Hanz x AI - Darkness"
     },
     "4": {
         "disc_give_name": "dia",
-        "song_file": "resources\\songs\\songs\\dia.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\dia.png",
+        "song_file": "resources/songs/songs/dia.ogg",
+        "disc_texture_file": "resources/songs/covers/dia.png",
         "title": "Radek x AI - Diamond Quest"
     },
     "5": {
         "disc_give_name": "dnbone",
-        "song_file": "resources\\songs\\songs\\dnbone.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\dnbone.png",
+        "song_file": "resources/songs/songs/dnbone.ogg",
+        "disc_texture_file": "resources/songs/covers/dnbone.png",
         "title": "TWO FEET - GO F YOURSELF (SUDLEY BOOTLEG FINALL)"
     },
     "6": {
         "disc_give_name": "dubstepone",
-        "song_file": "resources\\songs\\songs\\dubstepone.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\dubstepone.png",
+        "song_file": "resources/songs/songs/dubstepone.ogg",
+        "disc_texture_file": "resources/songs/covers/dubstepone.png",
         "title": "Minecraft Story Mode (PUNYASO Remix)"
     },
     "7": {
         "disc_give_name": "hardstyleone",
-        "song_file": "resources\\songs\\songs\\hardstyleone.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\hardstyleone.png",
+        "song_file": "resources/songs/songs/hardstyleone.ogg",
+        "disc_texture_file": "resources/songs/covers/hardstyleone.png",
         "title": "C418 - Aria Math Minecraft (HARDSTYLE Remix)"
     },
     "8": {
         "disc_give_name": "infernal",
-        "song_file": "resources\\songs\\songs\\infernal.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\infernal.png",
+        "song_file": "resources/songs/songs/infernal.ogg",
+        "disc_texture_file": "resources/songs/covers/infernal.png",
         "title": "Hanz x AI - Infernal"
     },
     "9": {
         "disc_give_name": "isengard",
-        "song_file": "resources\\songs\\songs\\isengard.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\isengard.png",
+        "song_file": "resources/songs/songs/isengard.ogg",
+        "disc_texture_file": "resources/songs/covers/isengard.png",
         "title": "The hobbits to isengard"
     },
     "10": {
         "disc_give_name": "lotr",
-        "song_file": "resources\\songs\\songs\\lotr.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\lotr.png",
+        "song_file": "resources/songs/songs/lotr.ogg",
+        "disc_texture_file": "resources/songs/covers/lotr.png",
         "title": "Lotr Soundtrack"
     },
     "11": {
         "disc_give_name": "pendulum",
-        "song_file": "resources\\songs\\songs\\pendulum.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\pendulum.png",
+        "song_file": "resources/songs/songs/pendulum.ogg",
+        "disc_texture_file": "resources/songs/covers/pendulum.png",
         "title": "Pendulum - Blood Sugar"
     },
     "12": {
         "disc_give_name": "pesetas",
-        "song_file": "resources\\songs\\songs\\pesetas.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\pesetas.png",
+        "song_file": "resources/songs/songs/pesetas.ogg",
+        "disc_texture_file": "resources/songs/covers/pesetas.png",
         "title": "Riles-PESETAS"
     },
     "13": {
         "disc_give_name": "rohony",
-        "song_file": "resources\\songs\\songs\\rohony.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\rohony.png",
+        "song_file": "resources/songs/songs/rohony.ogg",
+        "disc_texture_file": "resources/songs/covers/rohony.png",
         "title": "Rohony & mdmx  Cassiopea (ft. Pavel Machat)"
     },
     "14": {
         "disc_give_name": "rust",
-        "song_file": "resources\\songs\\songs\\rust.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\rust.png",
+        "song_file": "resources/songs/songs/rust.ogg",
+        "disc_texture_file": "resources/songs/covers/rust.png",
         "title": "Rust Song"
     },
     "15": {
         "disc_give_name": "subtronics",
-        "song_file": "resources\\songs\\songs\\subtronics.ogg",
-        "disc_texture_file": "resources\\songs\\covers\\subtronics.png",
+        "song_file": "resources/songs/songs/subtronics.ogg",
+        "disc_texture_file": "resources/songs/covers/subtronics.png",
         "title": "Subtronics x HOL! - Mind Pluck"
     }
 }

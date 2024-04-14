@@ -121,6 +121,7 @@ def gen_songs_pack():
         entry_list = create_entry_list(song_data)
         disk_list = disck_list_contents_from_json(entry_list)
 
+    print(entry_list)
     generator = generator_factory.get(settings)
     generator.validate(disk_list, settings)
     generator.create_tmp()
@@ -143,6 +144,8 @@ def merge_songs():
 def prepare_out_folder():
     os.makedirs(OUT_PATH, exist_ok=True)  
     shutil.rmtree(OUT_PATH, ignore_errors=True)
+    os.makedirs(OUT_PATH, exist_ok=True) 
+    os.makedirs(OUT_TMP_PATH, exist_ok=True) 
 
 def gen_packs():
     pack_folder(JAVA_PACK_ROOT, JAVA_PACK_OUT_PATH)

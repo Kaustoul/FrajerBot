@@ -48,6 +48,7 @@ def convert_sounds_2_bedrock():
 def copy_records_2_bedrock():
     os.makedirs(BEDROCK_RECKORDS_PATH, exist_ok=True)
     shutil.rmtree(BEDROCK_RECKORDS_PATH, ignore_errors=True)
+    os.makedirs(BEDROCK_RECKORDS_PATH, exist_ok=True)
 
     # Copy files from source to destination
     for filename in os.listdir(JAVA_RECKORDS_PATH):

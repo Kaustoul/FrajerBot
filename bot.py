@@ -95,6 +95,7 @@ async def updaterp(ctx: interactions.CommandContext):
     ctx.send("Started")
     os.makedirs(OUT_PATH, exist_ok=True)  
     shutil.rmtree(OUT_PATH, ignore_errors=True)
+    os.makedirs(OUT_PATH, exist_ok=True)    
     os.makedirs(OUT_TMP_PATH, exist_ok=True)  
 
     print("Starting")
