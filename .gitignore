@@ -1,9 +1,15 @@
 out/
 __pycache__/
 target/
+.pyggmpeg/
+
+.gitconfig
 
 *.rar
 
 infinite_music_discs_rp
 infinite_music_discs_dp
 bot-env/
+
+resources/javarp/assets/minecraft/sounds/records/*
+resources/bedrockrp/sounds/records/*
