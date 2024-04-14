@@ -3,13 +3,13 @@ import os
 import shutil
 
 from mcrcon import MCRcon
-from constants import SONGS_CONTENT_PATH, SONGS_COVERS_PATH, OUT_PATH, OUT_TMP_PATH, SERVER_RCON_PORT, SERVER_RCON_PWD, DATAPACK_NAME, JAVA_PACK_OUT_PATH
+from constants import SONGS_CONTENT_PATH, SONGS_COVERS_PATH, OUT_PATH, OUT_TMP_PATH, SERVER_RCON_PORT, SERVER_RCON_PWD, DATAPACK_NAME, JAVA_PACK_OUT_PATH, SERVER_DATAPACK_NAME
 from songs_manager import load_song_data, save_song_data, gen_songs_pack, merge_songs, prepare_out_folder, gen_packs, run_converter
 from items_manager import update_geyser_mappings, move_geyser_pack
 from server import copy_to_server, sha1_checksum
 import interactions
 
-bot = interactions.Client(token="MTIyNzMzNjk1ODc4Mzc4NzE1MA.GX_qv9.XUJXXp1o2L6I_X_2CCz3gs9djSoCFQ15DMTON4")
+bot = interactions.Client(token="MTIyNzMzNjk1ODc4Mzc4NzE1MA.GsZzlO.c6lJ3Xs_wvQpHjAerpVFwn_gqE1stYpfwbSFHs")
 
 @bot.command(
     name="addsong",
@@ -92,21 +92,20 @@ async def addsong(ctx: interactions.CommandContext, disc_give_name: str, disk_in
     options=[]
 )
 async def updaterp(ctx: interactions.CommandContext):
-    ctx.send("Started")
+    await ctx.send("Started")
     os.makedirs(OUT_PATH, exist_ok=True)  
     shutil.rmtree(OUT_PATH, ignore_errors=True)
     os.makedirs(OUT_PATH, exist_ok=True)    
     os.makedirs(OUT_TMP_PATH, exist_ok=True)  
 
     print("Starting")
+    prepare_out_folder()
     print("Generating songs pack")
     gen_songs_pack()
     print("Songs Generated")
     print("Merging songs pack inta main Java resource pack")
     merge_songs()
     print("Merging done")
-    print("Preparing out folder")
-    prepare_out_folder()
     print("Packing resource packs")
     gen_packs()
     print("done")
@@ -116,20 +115,21 @@ async def updaterp(ctx: interactions.CommandContext):
     move_geyser_pack()
     copy_to_server()
 
-    with MCRcon("localhost", SERVER_RCON_PWD, SERVER_RCON_PORT) as client:
-        response = client.command(f'datapack disable "file/{DATAPACK_NAME}"')
+    with MCRcon("46.36.41.49", SERVER_RCON_PWD, SERVER_RCON_PORT) as client:
+        response = client.command(f'datapack disable "file/{SERVER_DATAPACK_NAME}"')
         print("Response:", response)
 
-        response = client.command(f'datapack enable "file/{DATAPACK_NAME}"')
+        response = client.command(f'datapack enable "file/{SERVER_DATAPACK_NAME}"')
         print("Response:", response)
 
         response = client.command(f'rphash {sha1_checksum(JAVA_PACK_OUT_PATH)}')
         print("Response:", response)
 
-        response = client.command('tellraw @a {"text":"ResourcePack reloaded! Relog to enjoy the new features!\n(Bedrock user will not see new items until server restart)","color":"yellow"}')
+        response = client.command('tellraw @a {"text":"ResourcePack reloaded! Relog to enjoy the new features!\\n(Bedrock user will not see new items until server restart)","color":"yellow"}')
         print("Response:", response)
 
-    ctx.send("Done")
+    await ctx.send("Done")
 
 if __name__ == "__main__":
+    print("FrajerBot started!")
     bot.start()

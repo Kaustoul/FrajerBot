@@ -6,7 +6,11 @@ target/
 .pyffmpeg/
 
 .gitconfig
+.bash_history
 
+config.json
+default_assets.zip
+sprites.json
 *.rar
 
 infinite_music_discs_rp

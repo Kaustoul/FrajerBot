@@ -108,7 +108,7 @@ def disck_list_contents_from_json(entry_list):
 def gen_songs_pack():
     settings = {
         'pack': '', 
-        'version': {'dp': 26, 'rp': 22}, 
+        'version': {'dp': 26, 'rp': 22},
         'name': os.path.join(OUT_TMP_PATH, 'infinite_music_discs'),
         'zip': False, 'mix_mono': False,
         'legacy_dp': False, 

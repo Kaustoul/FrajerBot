@@ -1,7 +1,8 @@
 import hashlib
 import shutil
+import os
 
-from constants import DATAPACK_OUT_PATH, SERVER_DATAPACK_PATH, BEDROCK_PACK_OUT_PATH, SERVER_GEYSER_PACK_PATH, GEYSER_MAPPINGS_OUT_PATH, SERVER_GEYSER_MAPPINGS_PATH
+from constants import DATAPACK_OUT_PATH, SERVER_DATAPACK_PATH, BEDROCK_PACK_OUT_PATH, SERVER_GEYSER_PACK_PATH, GEYSER_MAPPINGS_OUT_PATH, SERVER_GEYSER_MAPPINGS_PATH, SERVER_PATH
 
 def sha1_checksum(file_path):
     # Initialize the SHA1 hash object
@@ -18,15 +19,15 @@ def sha1_checksum(file_path):
     return checksum_hex
 
 def copy_bedrock_resource_pack_to_server():
-    shutil.copytree(BEDROCK_PACK_OUT_PATH, SERVER_GEYSER_PACK_PATH)
+    shutil.copy(BEDROCK_PACK_OUT_PATH, SERVER_GEYSER_PACK_PATH)
     print(f"Resource pack copied to server successfully!")
 
 def copy_custom_mappings_to_server():
-    shutil.copytree(GEYSER_MAPPINGS_OUT_PATH, SERVER_GEYSER_MAPPINGS_PATH)
+    shutil.copy(GEYSER_MAPPINGS_OUT_PATH, SERVER_GEYSER_MAPPINGS_PATH)
     print(f"DataPack copied to server successfully!")
 
 def copy_datapack_to_server():
-    shutil.copytree(DATAPACK_OUT_PATH, SERVER_DATAPACK_PATH)
+    shutil.copytree(DATAPACK_OUT_PATH, SERVER_DATAPACK_PATH, dirs_exist_ok=True)
     print(f"DataPack copied to server successfully!")
 
 def copy_to_server():
