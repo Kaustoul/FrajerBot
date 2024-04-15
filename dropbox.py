@@ -26,7 +26,7 @@ def upload_files_to_dropbox(*file_paths):
             }
         )
 
-        # print(response.json())
+        print(response.json())
         upload_session_id = response.json()["session_id"]
 
         # Read file in chunks and append to upload session

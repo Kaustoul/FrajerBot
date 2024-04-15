@@ -76,7 +76,7 @@ async def addsong(ctx: interactions.CommandContext, disc_give_name: str, disk_in
     song_id = len(song_data) + 1
     song_data[song_id] = {
         "disc_give_name": disc_give_name,
-        "name": disk_ingame_name,
+        "title": disk_ingame_name,
         "song_file": song_path,
         "disc_texture_file": cover_path
     }
@@ -94,11 +94,11 @@ async def addsong(ctx: interactions.CommandContext, disc_give_name: str, disk_in
     options=[]
 )
 async def updaterp(ctx: interactions.CommandContext):
-    await ctx.send("Started")
-    os.makedirs(OUT_PATH, exist_ok=True)  
-    shutil.rmtree(OUT_PATH, ignore_errors=True)
-    os.makedirs(OUT_PATH, exist_ok=True)    
-    os.makedirs(OUT_TMP_PATH, exist_ok=True)  
+    #await ctx.send("Started")
+    #os.makedirs(OUT_PATH, exist_ok=True)  
+    #shutil.rmtree(OUT_PATH, ignore_errors=True)
+    #os.makedirs(OUT_PATH, exist_ok=True)    
+    #os.makedirs(OUT_TMP_PATH, exist_ok=True)  
 
     print("Starting")
     prepare_out_folder()
@@ -126,13 +126,15 @@ async def updaterp(ctx: interactions.CommandContext):
         response = client.command(f'datapack enable "file/{SERVER_DATAPACK_NAME}"')
         print("Response:", response)
 
-        response = client.command(f'rphash {sha1_checksum(JAVA_PACK_OUT_PATH)}')
-        print("Response:", response)
+        response = client.command(f'newhash {sha1_checksum(JAVA_PACK_OUT_PATH)}')
+        #print("Response:", response)
 
         response = client.command('tellraw @a {"text":"ResourcePack reloaded! Relog to enjoy the new features!\\n(Bedrock user will not see new items until server restart)","color":"yellow"}')
-        print("Response:", response)
+        #print("Response:", response)
 
+    print("Done")
     await ctx.send("Done")
+    #return
 
 if __name__ == "__main__":
     print("FrajerBot started!")

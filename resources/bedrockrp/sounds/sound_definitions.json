@@ -96,6 +96,12 @@
             "sounds": [
                 "sounds/records/subtronics"
             ]
+        },
+        "music_disc.test": {
+            "category": "music",
+            "sounds": [
+                "sounds/records/test"
+            ]
         }
     }
 }

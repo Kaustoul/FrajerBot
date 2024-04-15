@@ -94,5 +94,11 @@
         "song_file": "resources/songs/songs/subtronics.ogg",
         "disc_texture_file": "resources/songs/covers/subtronics.png",
         "title": "Subtronics x HOL! - Mind Pluck"
+    },
+    "17": {
+        "disc_give_name": "test",
+        "title": "TestDisc",
+        "song_file": "resources/songs/songs/test.ogg",
+        "disc_texture_file": "resources/songs/covers/test.png"
     }
 }
