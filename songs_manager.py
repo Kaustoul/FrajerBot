@@ -106,10 +106,11 @@ def disck_list_contents_from_json(entry_list):
     return disk_list
 
 def gen_songs_pack():
+    NAME = "infinite_music_discs"
     settings = {
         'pack': '', 
         'version': {'dp': 26, 'rp': 22},
-        'name': os.path.join(OUT_TMP_PATH, 'infinite_music_discs'),
+        'name': NAME,
         'zip': False, 'mix_mono': False,
         'legacy_dp': False, 
         'par_proc': False, 
@@ -134,6 +135,8 @@ def gen_songs_pack():
     generator.generate_resourcepack(disk_list, settings)
 
     generator.cleanup_tmp()
+    shutil.move(f"{NAME}_dp", os.path.join(OUT_TMP_PATH, f"{NAME}_dp"))
+    shutil.move(f"{NAME}_rp", os.path.join(OUT_TMP_PATH, f"{NAME}_rp"))
     print("Successfully generated datapack and resourcepack!")
     
 def merge_songs():
