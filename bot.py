@@ -7,6 +7,8 @@ from constants import SONGS_CONTENT_PATH, SONGS_COVERS_PATH, OUT_PATH, OUT_TMP_P
 from songs_manager import load_song_data, save_song_data, gen_songs_pack, merge_songs, prepare_out_folder, gen_packs, run_converter
 from items_manager import update_geyser_mappings, move_geyser_pack
 from server import copy_to_server, sha1_checksum
+from dropbox import upload_files_to_dropbox
+
 import interactions
 
 bot = interactions.Client(token="MTIyNzMzNjk1ODc4Mzc4NzE1MA.GsZzlO.c6lJ3Xs_wvQpHjAerpVFwn_gqE1stYpfwbSFHs")
@@ -114,6 +116,8 @@ async def updaterp(ctx: interactions.CommandContext):
     update_geyser_mappings()
     move_geyser_pack()
     copy_to_server()
+
+    upload_files_to_dropbox(JAVA_PACK_OUT_PATH)
 
     with MCRcon("46.36.41.49", SERVER_RCON_PWD, SERVER_RCON_PORT) as client:
         response = client.command(f'datapack disable "file/{SERVER_DATAPACK_NAME}"')
