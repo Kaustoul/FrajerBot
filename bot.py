@@ -10,7 +10,7 @@ from server import copy_to_server, sha1_checksum
 from dropbox import upload_files_to_dropbox
 
 import interactions
-
+running = False
 bot = interactions.Client(token="MTIyNzMzNjk1ODc4Mzc4NzE1MA.GsZzlO.c6lJ3Xs_wvQpHjAerpVFwn_gqE1stYpfwbSFHs")
 
 @bot.command(
@@ -94,6 +94,12 @@ async def addsong(ctx: interactions.CommandContext, disc_give_name: str, disk_in
     options=[]
 )
 async def updaterp(ctx: interactions.CommandContext):
+    global running
+    if running:
+        print("ALREADY RUNNING!")
+        return
+    
+    running = True
     #await ctx.send("Started")
     #os.makedirs(OUT_PATH, exist_ok=True)  
     #shutil.rmtree(OUT_PATH, ignore_errors=True)
@@ -132,8 +138,9 @@ async def updaterp(ctx: interactions.CommandContext):
         response = client.command('tellraw @a {"text":"ResourcePack reloaded! Relog to enjoy the new features!\\n(Bedrock user will not see new items until server restart)","color":"yellow"}')
         #print("Response:", response)
 
-    print("Done")
     await ctx.send("Done")
+    print("Done")
+    running = False
     #return
 
 if __name__ == "__main__":
