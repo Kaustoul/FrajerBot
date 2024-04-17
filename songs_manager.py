@@ -2,12 +2,14 @@ import os
 import json
 import shutil
 import subprocess
+import asyncio
 
 from constants import SONGS_COVERS_PATH, SONGS_CONTENT_PATH, ENTRY_LIST_JSON_PATH, SONGS_DATA_JSON_PATH, \
       JAVA_PACK_PATH, JAVA_PACK_NAME, BEDROCK_PACK_PATH, BEDROCK_PACK_NAME, OUT_PATH, OUT_TMP_PATH, \
       BEDROCK_PACK_OUT_PATH, JAVA_PACK_OUT_PATH, JAVA_PACK_ROOT
 from merge_songs import songs_pack_copy_to_java, convert_sounds_2_bedrock, copy_records_2_bedrock
 from zip import pack_folder
+from response_wrapper import ResponseWrapper
 
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "infinite-music-discs-sessions"))
@@ -122,7 +124,6 @@ def gen_songs_pack():
         entry_list = create_entry_list(song_data)
         disk_list = disck_list_contents_from_json(entry_list)
 
-    print(entry_list)
     generator = generator_factory.get(settings)
     generator.validate(disk_list, settings)
     generator.create_tmp()
@@ -154,6 +155,11 @@ def gen_packs():
     pack_folder(JAVA_PACK_ROOT, JAVA_PACK_OUT_PATH)
     pack_folder(BEDROCK_PACK_PATH, BEDROCK_PACK_OUT_PATH)
 
-def run_converter():
+async def run_converter(res: ResponseWrapper):
     command = ["java2bedrock.sh/converter.sh", JAVA_PACK_OUT_PATH, "-w", "false", "-m", BEDROCK_PACK_OUT_PATH, "-a", "null", "-b", "null", "-f", "null", "-v", "null"]
-    subprocess.run(command)
+    process = asyncio.create_subprocess_exec(command, stdout=subprocess.PIPE)
+
+    # process = await asyncio.create_subprocess_exec(".\\test.bat", stdout=subprocess.PIPE)
+
+    async for line in process.stdout:
+        await res.desc("Converting resource pack to bedrock:\n" + line.decode('utf-8'))

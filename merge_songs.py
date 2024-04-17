@@ -16,7 +16,6 @@ def songs_pack_copy_to_java():
             dest_path = os.path.join(JAVA_PACK_PATH, os.path.relpath(src_path, source_folder))
             os.makedirs(os.path.dirname(dest_path), exist_ok=True)
             shutil.copy(src_path, dest_path)
-            print(f"Copied {src_path} to {dest_path}")
 
 def convert_sounds_2_bedrock():
     # Paths to JSON files
@@ -55,4 +54,3 @@ def copy_records_2_bedrock():
         src_path = os.path.join(JAVA_RECKORDS_PATH, filename)
         dest_path = os.path.join(BEDROCK_RECKORDS_PATH, filename)
         shutil.copy(src_path, dest_path)
-        print(f"Copied {src_path} to {dest_path}")

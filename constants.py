@@ -1,4 +1,5 @@
 import os
+from discord import Object
 
 OUT_PATH = "out"
 OUT_TMP_PATH = os.path.join(OUT_PATH, "tmp")
@@ -20,6 +21,7 @@ SERVER_DATAPACK_NAME = "hudba"
 SERVER_DATAPACK_PATH = os.path.join(SERVER_PATH, "world", "datapacks", SERVER_DATAPACK_NAME)
 SERVER_RCON_PORT = 25566
 SERVER_RCON_PWD = "tXZrznQhwy7Wdk3m"
+WEBSERVER_DOWNLOADS_FOLDER = "/webdownloads"
 
 DATAPACK_NAME = "infinite_music_discs_dp"
 DATAPACK_OUT_PATH = os.path.join(OUT_TMP_PATH, DATAPACK_NAME)
@@ -40,3 +42,5 @@ GEYSER_MAPPINGS_PATH = os.path.join("target", GEYSER_MAPPINGS_NAME)
 GEYSER_MAPPINGS_OUT_PATH = os.path.join(OUT_PATH, GEYSER_MAPPINGS_NAME)
 
 DROPBOX_ACCESS_TOKEN = "sl.BzbUQtRgFjV8-v1OGAeKM-mEqheNKsLkeiHWh_zELYJjuJx-dsFg2Io91ZeUiuMp4txQ96Qj8nybUoUj405Qt7VjV7flgF9M23Q3snPDD4YAAdqYYI-UVrkal4g3IwEorllPVMqg9Dxx"
+GUILD_ID = 586545423632564234
+GUILD_ID_OBJECT = Object(id=GUILD_ID)

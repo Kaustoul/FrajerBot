@@ -2,7 +2,7 @@ import hashlib
 import shutil
 import os
 
-from constants import DATAPACK_OUT_PATH, SERVER_DATAPACK_PATH, BEDROCK_PACK_OUT_PATH, SERVER_GEYSER_PACK_PATH, GEYSER_MAPPINGS_OUT_PATH, SERVER_GEYSER_MAPPINGS_PATH, SERVER_PATH
+from constants import DATAPACK_OUT_PATH, SERVER_DATAPACK_PATH, BEDROCK_PACK_OUT_PATH, SERVER_GEYSER_PACK_PATH, GEYSER_MAPPINGS_OUT_PATH, SERVER_GEYSER_MAPPINGS_PATH, JAVA_PACK_OUT_PATH, WEBSERVER_DOWNLOADS_FOLDER, JAVA_PACK_NAME
 
 def sha1_checksum(file_path):
     # Initialize the SHA1 hash object
@@ -29,6 +29,10 @@ def copy_custom_mappings_to_server():
 def copy_datapack_to_server():
     shutil.copytree(DATAPACK_OUT_PATH, SERVER_DATAPACK_PATH, dirs_exist_ok=True)
     print(f"DataPack copied to server successfully!")
+
+def cope_resource_pack_to_webserver():
+    shutil.copy(JAVA_PACK_OUT_PATH, os.path.join(WEBSERVER_DOWNLOADS_FOLDER, JAVA_PACK_NAME))
+    print(f"ResourcePack copied to webserver successfully!")
 
 def copy_to_server():
     copy_bedrock_resource_pack_to_server()

@@ -1,130 +1,150 @@
 import requests
 import os
-import shutil
 
 from mcrcon import MCRcon
-from constants import SONGS_CONTENT_PATH, SONGS_COVERS_PATH, OUT_PATH, OUT_TMP_PATH, SERVER_RCON_PORT, SERVER_RCON_PWD, DATAPACK_NAME, JAVA_PACK_OUT_PATH, SERVER_DATAPACK_NAME
+from constants import SONGS_CONTENT_PATH, SONGS_COVERS_PATH, GUILD_ID_OBJECT, JAVA_PACK_OUT_PATH, SERVER_RCON_PORT, SERVER_RCON_PWD, SERVER_DATAPACK_NAME
 from songs_manager import load_song_data, save_song_data, gen_songs_pack, merge_songs, prepare_out_folder, gen_packs, run_converter
 from items_manager import update_geyser_mappings, move_geyser_pack
 from server import copy_to_server, sha1_checksum
 from dropbox import upload_files_to_dropbox
+from response_wrapper import ResponseWrapper
 
-import interactions
+import discord
+from discord import app_commands
+
 running = False
-bot = interactions.Client(token="MTIyNzMzNjk1ODc4Mzc4NzE1MA.GsZzlO.c6lJ3Xs_wvQpHjAerpVFwn_gqE1stYpfwbSFHs")
+client = discord.Client(intents=discord.Intents.default())
+tree = app_commands.CommandTree(client)
 
-@bot.command(
+@tree.command(
+    name="embed",
+    description="Sends an embed",
+    guild=GUILD_ID_OBJECT,
+)
+async def embed(ctx: discord.Interaction):
+    res = ResponseWrapper(ctx, "Test", "Testing")
+    await res.start()
+    await run_converter(res)
+
+@tree.command(
     name="addsong",
     description="Add a new song to your Minecraft group",
-    scope=586545423632564234,  # Replace YOUR_GUILD_ID with your guild's ID
-    options=[
-        interactions.Option(
-            name="disc_give_name",
-            description="Internal name / ID (max 28 characters)",
-            type=interactions.OptionType.STRING,
-            required=True
-        ),
-        interactions.Option(
-            name="disk_ingame_name",
-            description="Disk name (Artist - Song name)",
-            type=interactions.OptionType.STRING,
-            required=True
-        ),
-        interactions.Option(
-            name="song_file",
-            description="MP3, OGG, or WAV file",
-            type=interactions.OptionType.ATTACHMENT,
-            required=True
-        ),
-        interactions.Option(
-            name="disc_texture_file",
-            description="PNG file with square resolution (max 512x512)",
-            type=interactions.OptionType.ATTACHMENT,
-            required=True
-        )
-    ]
+    guild=GUILD_ID_OBJECT,
+    extras={
+        "options": [
+            {
+                'name': "disc_id",
+                'desc': "Identifikuje disc v příkazech (max 28 znaků)",
+                'type': discord.AppCommandOptionType.string,
+                'required': True
+            },
+            {
+                'name': "author_and_song_name",
+                'desc': "Jméno autora a skladby (Artist - Song name)",
+                'type': discord.AppCommandOptionType.string,
+                'required': True
+            },
+            {
+                'name': "song_file",
+                'desc': "Soubor MP3, OGG, nebo WAV",
+                'type': discord.AppCommandOptionType.attachment,
+                'required': True
+            },
+            {
+                'name': "disc_texture_file",
+                'desc': "Čtvercový obrázek PNG (max 512x512)",
+                'type': discord.AppCommandOptionType.attachment,
+                'required': True
+            },
+        ]
+    }
 )
-async def addsong(ctx: interactions.CommandContext, disc_give_name: str, disk_ingame_name: str, song_file: interactions.Attachment, disc_texture_file: interactions.Attachment):
- # Get the file extensions
+async def addsong(ctx: discord.Interaction, disc_id: str, author_and_song_name: str, song_file: discord.Attachment, disc_texture_file: discord.Attachment):
+    print("Adding a new song")
+    res = ResponseWrapper(ctx, "Adding a new song", "Just started")
+
+    await res.start()
+    await res.desc("Getting filenames")
     song_ext = os.path.splitext(song_file.filename)[-1]
     cover_ext = os.path.splitext(disc_texture_file.filename)[-1]
 
-    # Construct the filenames using the internal name and file extensions
-    song_filename = f"{disc_give_name}{song_ext}"
-    disc_texture_filename = f"{disc_give_name}{cover_ext}"
+    song_filename = f"{disc_id}{song_ext}"
+    disc_texture_filename = f"{disc_id}{cover_ext}"
 
-    # Save the uploaded files into the "songs" folder
     song_path = os.path.join(SONGS_CONTENT_PATH, song_filename)
     cover_path = os.path.join(SONGS_COVERS_PATH, disc_texture_filename)
     
-    # Download the song file
+    await res.desc("Downloading song from discord")
     song_url = song_file.url
     song_response = requests.get(song_url)
     with open(song_path, "wb") as song_output_file:
         song_output_file.write(song_response.content)
 
-    # Download the cover file
+    await res.desc("Downloading cover image from discord")
     cover_url = disc_texture_file.url
     cover_response = requests.get(cover_url)
     with open(cover_path, "wb") as cover_output_file:
         cover_output_file.write(cover_response.content)
 
-    # Load existing song data or create a new dictionary if it doesn't exist
+    await res.desc("Storing data")
     song_data = load_song_data()
-
-    # Add the new song data to the dictionary
     song_id = len(song_data) + 1
     song_data[song_id] = {
-        "disc_give_name": disc_give_name,
-        "title": disk_ingame_name,
+        "disc_give_name": disc_id,
+        "title": author_and_song_name,
         "song_file": song_path,
         "disc_texture_file": cover_path
     }
 
-    # Save the updated song data to the JSON file
+    await res.desc("Saving data")
     save_song_data(song_data)
 
-    await ctx.send(f"Song '{disk_ingame_name}' added with CustomModelData: {song_id}")
+    await res.title("Successfuly added a new song!")
+    await res.field(f"***{author_and_song_name}***", f"\u200B\n**Item id**:         {disc_id}\n**CustomModelData**: {song_id}\n\n\n*Use '/updaterp' to apply these changes to the server*")
+    await res.desc("\u200B")
+    await res.thumbnail(cover_url)
+    await res.color(discord.Color.green())
+    print("New song added")
 
 
-@bot.command(
+@tree.command(
     name="updaterp",
     description="Upload a new Resource Pack version to the server",
-    scope=586545423632564234,  # Replace YOUR_GUILD_ID with your guild's ID
-    options=[]
+    guild=GUILD_ID_OBJECT,  # Replace YOUR_GUILD_ID with your guild's ID
 )
-async def updaterp(ctx: interactions.CommandContext):
+async def updaterp(ctx: discord.Interaction):
+    res = ResponseWrapper(ctx, "Pushing the new resource pack to Minecraft server", "Starting")
+    await res.start()
     global running
     if running:
         print("ALREADY RUNNING!")
         return
     
-    running = True
-    #await ctx.send("Started")
-    #os.makedirs(OUT_PATH, exist_ok=True)  
-    #shutil.rmtree(OUT_PATH, ignore_errors=True)
-    #os.makedirs(OUT_PATH, exist_ok=True)    
-    #os.makedirs(OUT_TMP_PATH, exist_ok=True)  
-
-    print("Starting")
+    running = True 
+    await res.desc("Preparing out folder")
     prepare_out_folder()
-    print("Generating songs pack")
+    await res.desc("Generating records resource pack")
     gen_songs_pack()
-    print("Songs Generated")
-    print("Merging songs pack inta main Java resource pack")
+    await res.desc("Merging records pack into the resource pack")
     merge_songs()
-    print("Merging done")
-    print("Packing resource packs")
+    await res.desc("Packing resource pack")
     gen_packs()
-    print("done")
+    await res.desc("Running the converter")
     run_converter()
 
+    await res.desc("Updating geyser item mappings")
     update_geyser_mappings()
+
+    await res.desc("Copying files to minecraft server")
     move_geyser_pack()
     copy_to_server()
 
+    await res.desc("Copying Resource pack to webserver")
+
+    await res.desc("Uploading the resource pack to Dropbox")
     upload_files_to_dropbox(JAVA_PACK_OUT_PATH)
 
+    await res.desc("Sending the update command to the server")
     with MCRcon("46.36.41.49", SERVER_RCON_PWD, SERVER_RCON_PORT) as client:
         response = client.command(f'datapack disable "file/{SERVER_DATAPACK_NAME}"')
         print("Response:", response)
@@ -138,11 +158,19 @@ async def updaterp(ctx: interactions.CommandContext):
         response = client.command('tellraw @a {"text":"ResourcePack reloaded! Relog to enjoy the new features!\\n(Bedrock user will not see new items until server restart)","color":"yellow"}')
         #print("Response:", response)
 
-    await ctx.send("Done")
+    await res.title("Succesfully pushed the new Resource pack to Minecraft server!")
+    await res.desc("*Relog to enjoy the new features!*")
+    await res.color(discord.Color.green)
+
     print("Done")
     running = False
-    #return
+
+@client.event
+async def on_ready():
+    await tree.sync(guild=GUILD_ID_OBJECT)
+    print("FrajerBot started!")
+
 
 if __name__ == "__main__":
-    print("FrajerBot started!")
-    bot.start()
+    client.run("MTIyNzMzNjk1ODc4Mzc4NzE1MA.GsZzlO.c6lJ3Xs_wvQpHjAerpVFwn_gqE1stYpfwbSFHs")
+
