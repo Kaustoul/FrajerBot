@@ -32,7 +32,8 @@ BEDROCK_PACK_PATH = os.path.join("resources", "bedrockrp")
 BEDROCK_RECKORDS_PATH = os.path.join(BEDROCK_PACK_PATH, "sounds", "records")
 BEDROCK_SOUND_DEFINITIONS_PATH = os.path.join(BEDROCK_PACK_PATH, "sounds", "sound_definitions.json")
 BEDROCK_PACK_NAME = "BedrockSmazakovPack"
-BEDROCK_PACK_OUT_PATH = os.path.join(OUT_TMP_PATH, f"{BEDROCK_PACK_NAME}.mcpack")
+BEDROCK_PACK_OUT_NAME = f"{BEDROCK_PACK_NAME}.mcpack"
+BEDROCK_PACK_OUT_PATH = os.path.join(OUT_TMP_PATH, BEDROCK_PACK_OUT_NAME)
 
 SONGS_DATA_JSON_PATH = os.path.join(SONGS_PATH, "songs_data.json")
 ENTRY_LIST_JSON_PATH = os.path.join(OUT_TMP_PATH, "entry_list.json")

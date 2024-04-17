@@ -38,4 +38,3 @@ def copy_to_server():
     copy_bedrock_resource_pack_to_server()
     copy_custom_mappings_to_server()
     copy_datapack_to_server()
-    copy_resource_pack_to_webserver()
