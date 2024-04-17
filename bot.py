@@ -130,7 +130,7 @@ async def updaterp(ctx: discord.Interaction):
     await res.desc("Packing resource pack")
     gen_packs()
     await res.desc("Running the converter")
-    run_converter()
+    await run_converter(res)
 
     await res.desc("Updating geyser item mappings")
     update_geyser_mappings()
@@ -139,10 +139,10 @@ async def updaterp(ctx: discord.Interaction):
     move_geyser_pack()
     copy_to_server()
 
-    await res.desc("Copying Resource pack to webserver")
+    # await res.desc("Copying Resource pack to webserver")
 
-    await res.desc("Uploading the resource pack to Dropbox")
-    upload_files_to_dropbox(JAVA_PACK_OUT_PATH)
+    # await res.desc("Uploading the resource pack to Dropbox")
+    # upload_files_to_dropbox(JAVA_PACK_OUT_PATH)
 
     await res.desc("Sending the update command to the server")
     with MCRcon("46.36.41.49", SERVER_RCON_PWD, SERVER_RCON_PORT) as client:
@@ -158,9 +158,9 @@ async def updaterp(ctx: discord.Interaction):
         response = client.command('tellraw @a {"text":"ResourcePack reloaded! Relog to enjoy the new features!\\n(Bedrock user will not see new items until server restart)","color":"yellow"}')
         #print("Response:", response)
 
-    await res.title("Succesfully pushed the new Resource pack to Minecraft server!")
+    await res.title("Succesfully pushed a new Resource pack to the Minecraft server!")
     await res.desc("*Relog to enjoy the new features!*")
-    await res.color(discord.Color.green)
+    await res.color(discord.Color.green())
 
     print("Done")
     running = False

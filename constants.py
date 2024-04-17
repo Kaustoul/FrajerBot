@@ -12,7 +12,8 @@ JAVA_PACK_ROOT = os.path.join("resources", "javarp")
 JAVA_PACK_PATH = os.path.join(JAVA_PACK_ROOT, "assets", "minecraft")
 JAVA_RECKORDS_PATH = os.path.join(JAVA_PACK_PATH, "sounds", "records")
 JAVA_PACK_NAME = "SmazakovPack"
-JAVA_PACK_OUT_PATH = os.path.join(OUT_PATH, f"{JAVA_PACK_NAME}.zip")
+JAVA_PACK_OUT_NAME = f"{JAVA_PACK_NAME}.zip"
+JAVA_PACK_OUT_PATH = os.path.join(OUT_PATH, JAVA_PACK_OUT_NAME)
 
 SERVER_PATH = "/mcserver"
 SERVER_GEYSER_MAPPINGS_PATH = os.path.join(SERVER_PATH, "plugins", "Geyser-Spigot", "custom_mappings", "geyser_mappings.json")

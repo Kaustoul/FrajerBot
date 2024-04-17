@@ -157,7 +157,8 @@ def gen_packs():
 
 async def run_converter(res: ResponseWrapper):
     command = ["java2bedrock.sh/converter.sh", JAVA_PACK_OUT_PATH, "-w", "false", "-m", BEDROCK_PACK_OUT_PATH, "-a", "null", "-b", "null", "-f", "null", "-v", "null"]
-    process = asyncio.create_subprocess_exec(command, stdout=subprocess.PIPE)
+    command = " ".join(command)
+    process = await asyncio.create_subprocess_shell(command, stdout=subprocess.PIPE)
 
     # process = await asyncio.create_subprocess_exec(".\\test.bat", stdout=subprocess.PIPE)
 
