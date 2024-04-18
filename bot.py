@@ -3,7 +3,7 @@ import os
 
 from mcrcon import MCRcon
 from constants import SONGS_CONTENT_PATH, SONGS_COVERS_PATH, GUILD_ID_OBJECT, JAVA_PACK_OUT_PATH, SERVER_RCON_PORT, SERVER_RCON_PWD, SERVER_DATAPACK_NAME, BEDROCK_PACK_OUT_PATH, BEDROCK_PACK_OUT_NAME, GEYSER_MAPPINGS_OUT_PATH
-from songs_manager import load_song_data, save_song_data, gen_songs_pack, merge_songs, prepare_out_folder, gen_packs, run_converter
+from songs_manager import load_song_data, save_song_data, gen_songs_pack, merge_songs, prepare_out_folder, gen_packs, run_converter, create_custom_items_yaml
 from items_manager import update_geyser_mappings, move_geyser_pack
 from server import copy_to_server, sha1_checksum, copy_resource_pack_to_webserver
 from response_wrapper import ResponseWrapper
@@ -153,12 +153,15 @@ async def updaterp(ctx: discord.Interaction):
     # await res.desc("Copying files to minecraft server")
     # copy_to_server()
 
+    yaml_dict = create_custom_items_yaml()
     await res.desc("Uploading files to minecraft server via FTP")
     ftp_path = os.path.join("minecraft", "65e9d2b921f117421c332fce", "plugins")
     ftp = FTPUploader("ftp.hostify.cz", 21, "user_kaazaki_Rasdek", "Pgi6GdLhgAzPp8Cj")
     ftp.upload(BEDROCK_PACK_OUT_PATH, os.path.join(ftp_path, "RadkuvPlugin", "data", BEDROCK_PACK_OUT_NAME))
-    ftp.upload(GEYSER_MAPPINGS_OUT_PATH, os.path.join(ftp_path, "Geyser-Spigot", "custom_mappings", "geyser_mappings.json"))
-
+    ftp.upload(GEYSER_MAPPINGS_OUT_PATH, os.path.join(ftp_path, "GeyserSpigot", "custom_mappings", "geyser_mappings.json"))
+    ftp.upload(os.path.join("resources", "custom-hats.yml"), os.path.join(ftp_path, "RadkuvPlugin", "custom", "custom-hats.yml"))
+    ftp.upload_yaml(os.path.join(ftp_path, "RadkuvPlugin", "custom", "custom-discs.json"), yaml_dict)
+    ftp.close()
     await res.desc("Copying Resource pack to webserver")
     copy_resource_pack_to_webserver()
 

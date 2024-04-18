@@ -1,0 +1,76 @@
+CARVED-PUMPKIN:
+  crown:
+    displayName: "Svatá koruna"
+    customModelData: 4200
+  cowboy:
+    displayName: "Klobouk"
+    customModelData: 4201
+  elfEars:
+    displayName: "Elfské uši"
+    customModelData: 11
+  thornCrown:
+    displayName: "Trnová koruna"
+    customModelData: 12
+  creeperSuit:
+    displayName: "Oblek Creepera"
+    customModelData: 19
+  goldEgg:
+    displayName: "Zlaté vajíčko"
+    customModelData: 20
+  beard:
+    displayName: "Plnovous"
+    customModelData: 40
+  skullHelmet:
+    displayName: "Kostěná helma"
+    customModelData: 42
+  hardhat:
+    displayName: "Tvrdá přilba"
+    customModelData: 43
+  cone:
+    displayName: "Kornout"
+    customModelData: 44
+  tinyCrown:
+    displayName: "Malá koruna"
+    customModelData: 45
+  hood:
+    displayName: "Zamrzlá kapuce"
+    customModelData: 46
+  wreath:
+    displayName: "Zlatý věnec"
+    customModelData: 50
+  catEars:
+    displayName: "Kočičí uši"
+    customModelData: 52
+  catBaloon:
+    displayName: "Balónek s kočkou"
+    customModelData: 54
+  baloons:
+    displayName: "Balónky"
+    customModelData: 56
+  santa:
+    displayName: "Santova čepice"
+    customModelData: 59
+  boba:
+    displayName: "Boba Fettova helma"
+    customModelData: 60
+  mando:
+    displayName: "Din Djarinova helma"
+    customModelData: 61
+  stormtrooper:
+    displayName: "Stormtrooperská helma"
+    customModelData: 62
+  yoda:
+    displayName: "Uši Mistra Yody"
+    customModelData: 63
+  goldCrown:
+    displayName: "Zlatá koruna"
+    customModelData: 77
+  purpleCrown:
+    displayName: "Fialová koruna"
+    customModelData: 79
+  topHat:
+    displayName: "Červený klobouk"
+    customModelData: 101
+  dino:
+    displayName: "Dinošek"
+    customModelData: 4202

@@ -3,6 +3,7 @@ import json
 import shutil
 import subprocess
 import asyncio
+import yaml
 
 from constants import SONGS_COVERS_PATH, SONGS_CONTENT_PATH, ENTRY_LIST_JSON_PATH, SONGS_DATA_JSON_PATH, \
       JAVA_PACK_PATH, JAVA_PACK_NAME, BEDROCK_PACK_PATH, BEDROCK_PACK_NAME, OUT_PATH, OUT_TMP_PATH, \
@@ -15,6 +16,29 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "infinite-music-discs-sessions"))
 import src.generator.factory as generator_factory
 from src.definitions import DiscListContents, DiscListEntryContents
+
+def create_custom_items_yaml():
+    with open(SONGS_DATA_JSON_PATH, "r") as f:
+        song_data = json.load(f)
+
+    custom_items = {}
+
+    for key, data in song_data.items():
+        custom_model_data = int(key)
+        display_name = "&bMusic Disc"
+        title = [f"&7{data["title"]}"]
+        id = data["disc_give_name"]
+
+        custom_items[id] = {
+            "displayName": display_name,
+            "lore": title,
+            "customModelData": custom_model_data
+        }
+
+    return custom_items
+
+    # with open(os.path.join(), "w") as f:
+    #     yaml.dump({"MUSIC_DISC_11": custom_items}, f) 
 
 def generate_song_data():
     song_data = {}
