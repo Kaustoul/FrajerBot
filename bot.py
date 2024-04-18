@@ -65,23 +65,37 @@ async def addsong(ctx: discord.Interaction, disc_id: str, author_and_song_name: 
 
     await res.start()
     await res.desc("Getting filenames")
-    song_ext = os.path.splitext(song_file.filename)[-1]
-    cover_ext = os.path.splitext(disc_texture_file.filename)[-1]
+    song_ext = os.path.splitext(song_file.filename)[-1].lower()
+    cover_ext = os.path.splitext(disc_texture_file.filename)[-1].lower()
 
-    song_filename = f"{disc_id}{song_ext}"
-    disc_texture_filename = f"{disc_id}{cover_ext}"
+    print(song_file.filename, song_ext)
+    print(disc_texture_file.filename, cover_ext)
+    
+    if song_ext in ['.mp3', '.ogg', '.wav'] and cover_ext == ".png":
+        song_filename = f"{disc_id}{song_ext}"
+        song_url = song_file.url
+        disc_texture_filename = f"{disc_id}{cover_ext}"
+        cover_url = disc_texture_file.url
+    elif cover_ext in ['.mp3', '.ogg', '.wav'] and song_ext == ".png":
+        song_filename = f"{disc_id}{cover_ext}"
+        song_url = disc_texture_file.url
+        disc_texture_filename = f"{disc_id}{song_ext}"
+        cover_url = song_file.url
+    else:
+        await res.title("Failed to add a new song :(")
+        await res.desc("Invalid song file format. Please upload an MP3, OGG, or WAV file.")
+        await res.color(discord.Color.red())
+        return
 
     song_path = os.path.join(SONGS_CONTENT_PATH, song_filename)
     cover_path = os.path.join(SONGS_COVERS_PATH, disc_texture_filename)
     
     await res.desc("Downloading song from discord")
-    song_url = song_file.url
     song_response = requests.get(song_url)
     with open(song_path, "wb") as song_output_file:
         song_output_file.write(song_response.content)
 
     await res.desc("Downloading cover image from discord")
-    cover_url = disc_texture_file.url
     cover_response = requests.get(cover_url)
     with open(cover_path, "wb") as cover_output_file:
         cover_output_file.write(cover_response.content)
@@ -100,7 +114,7 @@ async def addsong(ctx: discord.Interaction, disc_id: str, author_and_song_name: 
     save_song_data(song_data)
 
     await res.title("Successfuly added a new song!")
-    await res.field(f"***{author_and_song_name}***", f"\u200B\n**Item id**:         {disc_id}\n**CustomModelData**: {song_id}\n\n\n*Use '/updaterp' to apply these changes to the server*")
+    await res.field(f"***{author_and_song_name}***", f"\u200B\n**Item id**: {disc_id}\n**CustomModelData**: {song_id}\n\n\n*Use '/updaterp' to apply these changes to the server*")
     await res.desc("\u200B")
     await res.thumbnail(cover_url)
     await res.color(discord.Color.green())
@@ -141,9 +155,9 @@ async def updaterp(ctx: discord.Interaction):
 
     await res.desc("Uploading files to minecraft server via FTP")
     ftp_path = os.path.join("minecraft", "65e9d2b921f117421c332fce", "plugins")
-    ftp = FTPUploader(ftp.hostify.cz, 21, "user_kaazaki_Rasdek", "Pgi6GdLhgAzPp8Cj")
+    ftp = FTPUploader("ftp.hostify.cz", 21, "user_kaazaki_Rasdek", "Pgi6GdLhgAzPp8Cj")
     ftp.upload(BEDROCK_PACK_OUT_PATH, os.path.join(ftp_path, "RadkuvPlugin", "data", BEDROCK_PACK_OUT_NAME))
-    ftp.upload(GEYSER_MAPPINGS_OUT_PATH, os.path.join(ftp_path, "GeyserSpigot", "custom_mappings", "geyser_mappings.json"))
+    ftp.upload(GEYSER_MAPPINGS_OUT_PATH, os.path.join(ftp_path, "Geyser-Spigot", "custom_mappings", "geyser_mappings.json"))
 
     await res.desc("Copying Resource pack to webserver")
     copy_resource_pack_to_webserver()
@@ -152,12 +166,12 @@ async def updaterp(ctx: discord.Interaction):
     # upload_files_to_dropbox(JAVA_PACK_OUT_PATH)
 
     await res.desc("Sending the update command to the server")
-    with MCRcon("46.36.41.49", SERVER_RCON_PWD, SERVER_RCON_PORT) as client:
-        response = client.command(f'datapack disable "file/{SERVER_DATAPACK_NAME}"')
-        print("Response:", response)
+    with MCRcon("armadillo.hostify.cz", SERVER_RCON_PWD, 31361) as client:
+        #response = client.command(f'datapack disable "file/{SERVER_DATAPACK_NAME}"')
+        #print("Response:", response)
 
-        response = client.command(f'datapack enable "file/{SERVER_DATAPACK_NAME}"')
-        print("Response:", response)
+        #response = client.command(f'datapack enable "file/{SERVER_DATAPACK_NAME}"')
+        #print("Response:", response)
 
         response = client.command(f'newhash {sha1_checksum(JAVA_PACK_OUT_PATH)}')
         #print("Response:", response)

@@ -19,3 +19,7 @@ bot-env/
 
 resources/javarp/assets/minecraft/sounds/records/*
 resources/bedrockrp/sounds/records/*
+resources/bedrockrp/sounds/sound_definitions.json
+resources/javarp/assets/minecraft/models/*
+resources/javarp/assets/minecraft/textures/item/*
+resources/songs/*

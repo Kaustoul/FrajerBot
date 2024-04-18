@@ -97,10 +97,10 @@
                 "sounds/records/subtronics"
             ]
         },
-        "music_disc.test": {
+        "music_disc.noveid": {
             "category": "music",
             "sounds": [
-                "sounds/records/test"
+                "sounds/records/noveid"
             ]
         }
     }

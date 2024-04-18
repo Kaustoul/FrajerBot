@@ -7,7 +7,6 @@ class FTPUploader:
         self.ftp.login(username, pwd)
 
     def upload(self, local_file_path, remote_file_path):
-        assert self.transport and self.sftp
         try:
             with open(local_file_path, 'rb') as f:
                 self.ftp.storbinary(f'STOR {remote_file_path}', f)

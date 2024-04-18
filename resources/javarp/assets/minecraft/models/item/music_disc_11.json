@@ -104,7 +104,7 @@
             "predicate": {
                 "custom_model_data": 17
             },
-            "model": "item/music_disc_test"
+            "model": "item/music_disc_noveid"
         }
     ]
 }

@@ -127,10 +127,10 @@
             }
         ]
     },
-    "music_disc.test": {
+    "music_disc.noveid": {
         "sounds": [
             {
-                "name": "records/test",
+                "name": "records/noveid",
                 "stream": true
             }
         ]

@@ -71,5 +71,5 @@ class ResponseWrapper:
         await self.ctx.edit_original_response(embed=self.embed_data.embed())
 
     async def field(self, title: str, content: str):
-        self.embed_data.fields.append((title, content))
+        self.embed_data.fields = [(title, content)]
         await self.ctx.edit_original_response(embed=self.embed_data.embed())
