@@ -1,6 +1,7 @@
 from ftplib import FTP
 import yaml
 from io import BytesIO
+import json
 
 class FTPUploader:
     def __init__(self, hostname, port, username, pwd):
@@ -21,6 +22,11 @@ class FTPUploader:
         yaml_str = yaml.dump(yaml_dict)
         yaml_bytes = yaml_str.encode('utf-8')
         self.ftp.storbinary(f'STOR {output_filename}', BytesIO(yaml_bytes))
+        
+    def upload_json(self, output_filename, json_dict):
+        json_str = json.dumps(json_dict)  # Corrected function call
+        json_bytes = json_str.encode('utf-8')
+        self.ftp.storbinary(f'STOR {output_filename}', BytesIO(json_bytes))
 
     def close(self):
         self.ftp.quit()

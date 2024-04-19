@@ -27,8 +27,8 @@ def geyser_mappings_add_record_titles(mappings_data):
     for custom_model_data, value in data.items():
         item_mappings = mappings_data["minecraft:music_disc_11"]
         for mapping in item_mappings:
-            if mapping["custom_model_data"] == custom_model_data and "title" in value:
-                mapping["display_name"] = value["title"]
+            mapping["display_name"] = "§bMusic Disc"
+            #mapping["icon"] = mapping["name"]
 
 
 def update_geyser_mappings():
@@ -36,11 +36,10 @@ def update_geyser_mappings():
         mappings_json = json.load(mappings)
 
     mappings_data = mappings_json["items"]
-    geyser_mappings_add_item_titles(mappings_data, os.path.join("resources", "custom-hats.yml"))
+    geyser_mappings_add_item_titles(mappings_data, os.path.join("resources", "custom-items.yml"))
     geyser_mappings_add_record_titles(mappings_data)
 
-    with open(GEYSER_MAPPINGS_OUT_PATH, 'w') as out_file:
-        json.dump(mappings_json, out_file, indent=4)
+    return mappings_json
 
 def move_geyser_pack():
     shutil.move(os.path.join("target", "packaged", "geyser_resources.mcpack"), BEDROCK_PACK_OUT_PATH)

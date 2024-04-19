@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import asyncio
 import yaml
+import subprocess
 
 from constants import SONGS_COVERS_PATH, SONGS_CONTENT_PATH, ENTRY_LIST_JSON_PATH, SONGS_DATA_JSON_PATH, \
       JAVA_PACK_PATH, JAVA_PACK_NAME, BEDROCK_PACK_PATH, BEDROCK_PACK_NAME, OUT_PATH, OUT_TMP_PATH, \
@@ -26,19 +27,37 @@ def create_custom_items_yaml():
     for key, data in song_data.items():
         custom_model_data = int(key)
         display_name = "&bMusic Disc"
-        title = [f"&7{data["title"]}"]
-        id = data["disc_give_name"]
+        title = [f"&7{data['title']}"] 
 
-        custom_items[id] = {
+        custom_items[data["disc_give_name"]] = {
             "displayName": display_name,
             "lore": title,
             "customModelData": custom_model_data
         }
-
+	
     return custom_items
 
-    # with open(os.path.join(), "w") as f:
-    #     yaml.dump({"MUSIC_DISC_11": custom_items}, f) 
+def update_json_file(song_data, json_file_path):
+    with open(json_file_path, 'r') as file:
+        data = json.load(file)
+        
+    data['music_disc_11'] = []
+    for key, value in song_data.items():
+        custom_model_data = key
+        sprite = os.path.join("item", value['disc_give_name'])
+		
+        if sprite.endswith('.png'):
+            sprite = sprite[:-4]
+            
+        new_entry = {
+            'custom_model_data': custom_model_data,
+            'sprite': sprite
+        }
+
+        data['music_disc_11'].append(new_entry)
+
+    with open(json_file_path, 'w') as file:
+        json.dump(data, file, indent=4)
 
 def generate_song_data():
     song_data = {}
@@ -164,6 +183,8 @@ def gen_songs_pack():
     shutil.move(f"{NAME}_rp", os.path.join(OUT_TMP_PATH, f"{NAME}_rp"))
     print("Successfully generated datapack and resourcepack!")
     
+    return song_data
+    
 def merge_songs():
     songs_pack_copy_to_java()
     copy_records_2_bedrock()
@@ -180,11 +201,14 @@ def gen_packs():
     pack_folder(BEDROCK_PACK_PATH, BEDROCK_PACK_OUT_PATH)
 
 async def run_converter(res: ResponseWrapper):
-    command = ["java2bedrock.sh/converter.sh", JAVA_PACK_OUT_PATH, "-w", "false", "-m", BEDROCK_PACK_OUT_PATH, "-a", "null", "-b", "null", "-f", "null", "-v", "null"]
+    command = ["java2bedrock.sh/converter.sh", JAVA_PACK_OUT_PATH, "-w", "false", "-m", BEDROCK_PACK_OUT_PATH, "-a", "null", "-b", "null", "-f", "null", "-v", "true"]
     command = " ".join(command)
-    process = await asyncio.create_subprocess_shell(command, stdout=subprocess.PIPE)
+    #process = await asyncio.create_subprocess_exec(command, stdout=subprocess.PIPE)
+    process = await asyncio.create_subprocess_shell(command)
+    await process.wait()
+    #subprocess.call(command)
 
-    # process = await asyncio.create_subprocess_exec(".\\test.bat", stdout=subprocess.PIPE)
+    #process = await asyncio.create_subprocess_exec(".\\test.bat", stdout=subprocess.PIPE)
 
-    async for line in process.stdout:
-        await res.desc("Converting resource pack to bedrock:\n" + line.decode('utf-8'))
+   # async for line in process.stdout:
+    #    await res.desc("Converting resource pack to bedrock:\n" + line.decode('utf-8'))
