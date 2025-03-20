@@ -9,7 +9,7 @@ from items_manager import update_geyser_mappings, move_geyser_pack
 from server import copy_to_server, sha1_checksum
 import interactions
 
-bot = interactions.Client(token="MTIyNzMzNjk1ODc4Mzc4NzE1MA.GX_qv9.XUJXXp1o2L6I_X_2CCz3gs9djSoCFQ15DMTON4")
+bot = interactions.Client(token="")
 
 @bot.command(
     name="addsong",
